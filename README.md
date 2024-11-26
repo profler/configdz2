@@ -1,5 +1,9 @@
 # configdz2
 
-py visualizer.py - запуск программы
+Запуск программы:
 
-py test_visualizer.py - запуск тестов
+py visualizer.py
+
+Запуск тестов:
+
+py test_visualizer.py
