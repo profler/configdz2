@@ -45,8 +45,8 @@ def generate_mermaid_code(graph):
     mermaid_code = ["graph TD"]
     for commit, changes in graph:
         node_id = commit[:7]  # Укороченный хэш
-        label = "\\n".join(changes) if changes else "No changes"
-        mermaid_code.append(f'{node_id}["{node_id}\\n{label}"]')
+        label = " , ".join(changes) if changes else "No changes"
+        mermaid_code.append(f'{node_id}["{label}"]')
 
     for i in range(len(graph) - 1):
         mermaid_code.append(f"{graph[i][0][:7]} --> {graph[i + 1][0][:7]}")
