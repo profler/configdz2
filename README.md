@@ -3,11 +3,11 @@
 
 Запуск программы:
 
-** py visualizer.py **
+### py visualizer.py 
 
 Запуск тестов:
 
-** py test_visualizer.py **
+### py test_visualizer.py 
 
 Вот краткое описание всех функций кода:
 
