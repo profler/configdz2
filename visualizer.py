@@ -6,13 +6,16 @@ import sys
 def get_git_commits(repo_path):
     """Gets a list of all commits in the repository."""
     try:
-        result = subprocess.check_output(
-            ["git", "-C", repo_path, "log", "--pretty=format:%H"], text=True
-        )
-        return result.strip().split("\n")
-    except subprocess.CalledProcessError as e:
-        print(f"Error while executing git log: {e}")
+        # Проверяем, существует ли путь к репозиторию
+        if not os.path.exists(repo_path):
+            raise ValueError(f"The repository path '{repo_path}' does not exist.")
+        repo = Repo(repo_path)
+        commits = [commit.hexsha for commit in repo.iter_commits()]
+        return commits
+    except (GitCommandError, ValueError) as e:
+        print(f"Error while accessing git repository: {e}")
         sys.exit(1)
+
 
 
 def get_commit_changes(repo_path, commit_hash):
